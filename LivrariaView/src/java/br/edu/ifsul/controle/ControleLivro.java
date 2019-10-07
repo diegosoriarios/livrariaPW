@@ -26,6 +26,8 @@ public class ControleLivro implements Serializable{
     @EJB
     private LivroDAO dao;
     private Livro objeto;
+    
+    private boolean foiEditado = false;
 
     @EJB
     private IdiomaDAO daoIdioma;
@@ -66,7 +68,7 @@ public class ControleLivro implements Serializable{
     
     public void salvar() {
         try {
-            if (objeto.getISBN() == null) {
+            if (objeto.getISBN().isEmpty()) {
                 dao.persist(objeto);
             } else {
                 dao.merge(objeto);

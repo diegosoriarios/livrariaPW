@@ -5,7 +5,7 @@
  */
 package br.edu.ifsul.converters;
 
-import br.edu.ifsul.modelo.Formato;
+import br.edu.ifsul.modelo.Catalogo;
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIComponent;
@@ -22,9 +22,9 @@ import javax.persistence.PersistenceContext;
  *
  * @author 20172PF.CC0095
  */
-@Named(value = "converteFormato")
+@Named(value = "converteCatalogo")
 @RequestScoped
-public class ConverteFormato implements Serializable, Converter {
+public class ConverteCatalogo implements Serializable, Converter {
 
     @PersistenceContext(unitName = "Livraria-PW-WebPU")
     private EntityManager em;
@@ -34,8 +34,8 @@ public class ConverteFormato implements Serializable, Converter {
         if (string == null || string.equals("Selecione um registro")) {
             return null;
         }
-        
-        return em.find(Formato.class, Integer.parseInt(string));
+        System.out.println("string do converter: " + string);
+        return em.find(Catalogo.class, Integer.parseInt(string));
     }
 
     @Override
@@ -43,8 +43,8 @@ public class ConverteFormato implements Serializable, Converter {
         if (t == null) {
             return null;
         }
-        System.out.println("Parei aqui");
-        Formato obj = (Formato) t;
+        
+        Catalogo obj = (Catalogo) t;
         
         return obj.getId().toString();
     }

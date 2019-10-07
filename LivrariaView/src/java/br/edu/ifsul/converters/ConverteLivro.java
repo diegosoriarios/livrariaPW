@@ -26,7 +26,7 @@ import javax.persistence.PersistenceContext;
 @RequestScoped
 public class ConverteLivro implements Serializable, Converter {
 
-    @PersistenceContext(unitName = "PW-2019-2-WebPU")
+    @PersistenceContext(unitName = "Livraria-PW-WebPU")
     private EntityManager em;
     
     @Override

@@ -5,17 +5,17 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">CRUD de Estados</ui:define>
+        <ui:define name="titulo">CRUD de Idiomas</ui:define>
         <ui:define name="conteudo">
             <h:form id="formListagem" prependId="false">
                 <p:growl />
                 <p:commandButton value="Novo" 
-                                 actionListener="#{controleEstado.novo()}"
+                                 actionListener="#{controleIdioma.novo()}"
                                  icon="pi pi-plus"
                                  update="formEdicao" 
                                  process="@this"
                                  oncomplete="PF('dlg').show();" />
-                <p:dataTable value="#{controleEstado.dao.listaObjetos}" var="obj">
+                <p:dataTable value="#{controleIdioma.dao.listaObjetos}" var="obj">
                     <p:column headerText="ID">
                         <p:outputLabel value="#{obj.id}" />
                     </p:column>
@@ -27,13 +27,13 @@
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton actionListener="#{controleEstado.alterar(obj.id)}"
+                            <p:commandButton actionListener="#{controleIdioma.alterar(obj.id)}"
                                              icon="pi pi-pencil"
                                              title="Editar"
                                              update="formEdicao"
                                              process="@this"
                                              oncomplete="PF('dlg').show();" />
-                            <p:commandButton actionListener="#{controleEstado.remover(obj.id)}"
+                            <p:commandButton actionListener="#{controleIdioma.remover(obj.id)}"
                                              icon="pi pi-trash"
                                              title="Remover"
                                              update="@form"
@@ -50,25 +50,25 @@
                     <div align="center">
                         <p:panelGrid columns="2">
                             <p:outputLabel value="ID"/>
-                            <p:inputText value="#{controleEstado.objeto.id}" 
+                            <p:inputText value="#{controleIdioma.objeto.id}" 
                                          readonly="true" 
                                          size="5" />
                             
                             <p:outputLabel value="Nome" for="txtNome" />
                             <p:inputText id="txtNome" 
-                                         value="#{controleEstado.objeto.nome}"
+                                         value="#{controleIdioma.objeto.nome}"
                                          size="50" maxlength="50" 
                                          placeholder="Obrigatório"/>
                            
                             <p:outputLabel value="Sigla" for="txtSigla" />
-                            <p:inputText id="txtSigla" value="#{controleEstado.objeto.sigla}"
+                            <p:inputText id="txtSigla" value="#{controleIdioma.objeto.sigla}"
                                          size="3" maxlength="2" />
                         </p:panelGrid>
                     </div>
                     <p:panel>
                         <div align="center">
                             <p:commandButton value="Salvar"
-                                             actionListener="#{controleEstado.salvar()}"
+                                             actionListener="#{controleIdioma.salvar()}"
                                              icon="pi pi-save"
                                              update="formEdicao formListagem"
                                              process="@form"

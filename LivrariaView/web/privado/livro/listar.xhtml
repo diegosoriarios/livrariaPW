@@ -20,17 +20,21 @@
                     <p:column headerText="ISBN">
                         <p:outputLabel value="#{obj.ISBN}" />
                     </p:column>
+                    
                     <p:column headerText="Cadastro">
-                        <p:outputLabel value="#{obj.cadastro}" />
+                        <p:outputLabel value="#{obj.cadastro}">
+                            <f:converter converterId="converterCalendar"/>
+                        </p:outputLabel>
                     </p:column>
-                    <p:column headerText="Catalogo">
-                        <p:outputLabel value="#{obj.catalogo.nome}" />
-                    </p:column>
+                    
+                  
                     <p:column headerText="Codigo de Barras">
                         <p:outputLabel value="#{obj.codigoBarras}" />
                     </p:column>
                     <p:column headerText="Data Publicacao">
-                        <p:outputLabel value="#{obj.dataPublicacao}" />
+                        <p:outputLabel value="#{obj.dataPublicacao}">
+                            <f:converter converterId="converterCalendar"/>
+                        </p:outputLabel>
                     </p:column>
                     <p:column headerText="Editora">
                         <p:outputLabel value="#{obj.editora}" />
@@ -55,13 +59,13 @@
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton actionListener="#{controleLivro.alterar(obj.id)}"
+                            <p:commandButton actionListener="#{controleLivro.alterar(obj.ISBN)}"
                                              icon="pi pi-pencil"
                                              title="Editar"
                                              update="formEdicao"
                                              process="@this"
                                              oncomplete="PF('dlg').show();" />
-                            <p:commandButton actionListener="#{controleLivro.remover(obj.id)}"
+                            <p:commandButton actionListener="#{controleLivro.remover(obj.ISBN)}"
                                              icon="pi pi-trash"
                                              title="Remover"
                                              update="@form"
@@ -77,25 +81,25 @@
                     <p:growl id="growl" />
                     <div align="center">
                         <p:panelGrid columns="2">
-                            <p:outputLabel value="ID"/>
+                            <p:outputLabel value="ISBN"/>
                             <p:inputText value="#{controleLivro.objeto.ISBN}" 
-                                         readonly="true" 
-                                         size="5" />
+                                         size="15" />
                             
-                            <p:outputLabel value="Cadastro" for="txtCadastro" />
-                            <p:inputText id="txtCadastro" 
-                                         value="#{controleLivro.objeto.cadastro}"
-                                         size="50" maxlength="50" 
-                                         placeholder="Obrigatório"/>
+                            <p:outputLabel value="Data de Cadastro" for="txtDataCadastro"/>
+                            <p:calendar id="txtDataCadastro" value="#{controleLivro.objeto.cadastro}"
+                                                    mask="true" pattern="dd/MM/yyyy" navigator="true" size="10">
+                                    <f:converter converterId="converterCalendar"/>
+                            </p:calendar>
+                            
                            
-                            <p:outputLabel value="Catalogo" for="selectCatalogo" />catalogo
+                            <p:outputLabel value="Catalogo" for="selectCatalogo" />
                             <p:selectOneMenu id="selectCatalogo" value="#{controleLivro.objeto.catalogo}"
                                              filter="true" filterMatchMode="startsWith" >
                                 <f:selectItem itemLabel="Selecione um registro"
                                               noSelectionOption="true" />
-                                <f:converter binding="#{converteLivro}" />
+                                <f:converter binding="#{converteCatalogo}" />
                                 <f:selectItems value="#{controleLivro.daoCatalogo.listaTodos}"
-                                               var="est" itemLabel="#{est.id}" />
+                                               var="cat" itemLabel="#{cat.nome}"/>
                             </p:selectOneMenu>
                             
                             <p:outputLabel value="Codigo de Barras" for="txtCodigoBarras" />
@@ -104,11 +108,11 @@
                                          size="50" maxlength="50" 
                                          placeholder="Obrigatório"/>
                            
-                            <p:outputLabel value="Data Publicação" for="txtDataPublicacao" />
-                            <p:inputText id="txtDataPublicacao" 
-                                         value="#{controleLivro.objeto.dataPublicacao}"
-                                         size="50" maxlength="50" 
-                                         placeholder="Obrigatório"/>
+                            <p:outputLabel value="Data de Publicação" for="txtDataPublicacao"/>
+                            <p:calendar id="txtDataPublicacao" value="#{controleLivro.objeto.dataPublicacao}"
+                                                    mask="true" pattern="dd/MM/yyyy" navigator="true" size="10">
+                                    <f:converter converterId="converterCalendar"/>
+                            </p:calendar>
                             
                             <p:outputLabel value="Editora" for="txtEditora" />
                             <p:inputText id="txtEditora" 
@@ -140,24 +144,24 @@
                                          size="50" maxlength="50" 
                                          placeholder="Obrigatório"/>
                             
-                            <p:outputLabel value="Formato" for="selectFormato" />formato
+                            <p:outputLabel value="Formato" for="selectFormato" />
                             <p:selectOneMenu id="selectFormato" value="#{controleLivro.objeto.formato}"
                                              filter="true" filterMatchMode="startsWith" >
                                 <f:selectItem itemLabel="Selecione um registro"
                                               noSelectionOption="true" />
-                                <f:converter binding="#{converteLivro}" />
+                                <f:converter binding="#{converteFormato}" />
                                 <f:selectItems value="#{controleLivro.daoFormato.listaTodos}"
-                                               var="est" itemLabel="#{est.id}" />
+                                               var="formt" itemLabel="#{formt.nome}" />
                             </p:selectOneMenu>
                             
-                            <p:outputLabel value="Idioma" for="selectIdioma" />idioma
+                            <p:outputLabel value="Idioma" for="selectIdioma" />
                             <p:selectOneMenu id="selectIdioma" value="#{controleLivro.objeto.idioma}"
                                              filter="true" filterMatchMode="startsWith" >
                                 <f:selectItem itemLabel="Selecione um registro"
                                               noSelectionOption="true" />
-                                <f:converter binding="#{converteLivro}" />
+                                <f:converter binding="#{converteIdioma}" />
                                 <f:selectItems value="#{controleLivro.daoIdioma.listaTodos}"
-                                               var="est" itemLabel="#{est.id}" />
+                                               var="idi" itemLabel="#{idi.nome}" />
                             </p:selectOneMenu>
                             
                         </p:panelGrid>

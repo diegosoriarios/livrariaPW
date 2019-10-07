@@ -17,7 +17,7 @@ import javax.inject.Named;
  *
  * @author 20172PF.CC0095
  */
-@Named(value = "controleEstado")
+@Named(value = "controleIdioma")
 @ViewScoped
 public class ControleIdioma implements Serializable{
     @EJB
