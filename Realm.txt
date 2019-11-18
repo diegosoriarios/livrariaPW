@@ -1,0 +1,10 @@
+JNDI: jdbc/PW20192
+user table: usuario
+user_name_column : nome_usuario
+password: senha
+group table: permissoes
+group table user name? usuario
+group name  column ? permissao
+database: postgres
+password: postgres
+digest: none

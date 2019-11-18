@@ -7,6 +7,7 @@ package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
@@ -132,5 +133,31 @@ public class Livro extends LivroBasico implements Serializable {
     public void setFormato(Formato formato) {
         this.formato = formato;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.codigoBarras);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Livro other = (Livro) obj;
+        if (!Objects.equals(this.codigoBarras, other.codigoBarras)) {
+            return false;
+        }
+        return true;
+    }
+    
     
 }
