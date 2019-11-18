@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author 20172PF.CC0095
  */
-@Named
+@Named(value = "controleLogin")
 @SessionScoped
 public class ControleLogin implements Serializable {
     
