@@ -11,7 +11,9 @@ import br.edu.ifsul.DAO.LivroDAO;
 import br.edu.ifsul.DAO.IdiomaDAO;
 import br.edu.ifsul.modelo.Livro;
 import br.edu.ifsul.util.Util;
+import br.edu.ifsul.util.UtilRelatorios;
 import java.io.Serializable;
+import java.util.HashMap;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -42,6 +44,18 @@ public class ControleLivro implements Serializable{
     
     public String listar() {
         return "/privado/livro/listar?faces-redirect=true";
+    }
+    
+    public void imprimeLivros(){
+        HashMap parametros = new HashMap();
+        UtilRelatorios.imprimeRelatorio("Livros", 
+                parametros, dao.getListaTodos());
+    }
+    
+    public void imprimeCatalogo(){
+        HashMap parametros = new HashMap();
+        UtilRelatorios.imprimeRelatorio("Catalogo", 
+                parametros, daoCatalogo.getListaTodos());
     }
     
     public void novo() {

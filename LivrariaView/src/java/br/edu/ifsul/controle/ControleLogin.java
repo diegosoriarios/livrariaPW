@@ -29,7 +29,8 @@ public class ControleLogin implements Serializable {
     private String usuario;
     private String senha;
 
-    public ControleLogin() {}
+    public ControleLogin() {
+    }
     
     public String irPaginaLogin() {
         return "/login?faces-redirect=true";

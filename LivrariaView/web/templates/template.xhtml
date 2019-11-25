@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" >
     <h:head>
         <title><ui:insert name="titulo">aqui vai o titulo</ui:insert></title>
         <h:outputStylesheet library="css" name="estilos.css"/>
@@ -31,6 +31,23 @@
                                         value="Manutenção de Livro"
                                         ajax="false"/>
                         </p:submenu>                        
+                    </p:column>
+                </p:submenu>
+                
+                <p:submenu label="Relatórios">
+                    <p:column>
+                        <p:submenu label="Básicos">
+                            <p:menuitem 
+                                action="#{controleLivro.imprimeLivros()}"
+                                value="Livros"
+                                ajax="false"
+                                target="_blank"/>
+                            <p:menuitem 
+                                action="#{controleLivro.imprimeCatalogo()}"
+                                value="Catalogo"
+                                ajax="false"
+                                target="_blank"/>
+                        </p:submenu>
                     </p:column>
                 </p:submenu>
                 

@@ -48,7 +48,7 @@ public class Catalogo implements Serializable {
     private String descricao;
     
     @OneToMany(mappedBy = "catalogo", cascade = CascadeType.ALL,
-            orphanRemoval = true, fetch = FetchType.LAZY)
+            orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Livro> livros = new ArrayList<>();
     
     @NotNull(message = "A livraria deve ser informado")
