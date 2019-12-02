@@ -5,7 +5,7 @@
  */
 package br.edu.ifsul.controle;
 
-import br.edu.ifsul.dao.UsuarioDAO;
+import br.edu.ifsul.DAO.UsuarioDAO;
 import br.edu.ifsul.modelo.Usuario;
 import br.edu.ifsul.util.Util;
 import java.io.Serializable;

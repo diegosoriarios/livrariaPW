@@ -1,4 +1,4 @@
-package br.edu.ifsul.dao;
+package br.edu.ifsul.DAO;
 
 import br.edu.ifsul.modelo.Usuario;
 import java.io.Serializable;
