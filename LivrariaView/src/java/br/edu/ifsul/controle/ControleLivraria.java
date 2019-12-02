@@ -82,7 +82,7 @@ public class ControleLivraria implements Serializable{
     
     public void salvar() {
         try {
-            if (objeto.getId() == null) {
+            if (objeto.getId()== null) {
                 dao.persist(objeto);
             } else {
                 dao.merge(objeto);
