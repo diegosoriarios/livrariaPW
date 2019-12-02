@@ -52,6 +52,7 @@ public class ControleLogin implements Serializable {
             return "/index?faces-redirect=true";
         } catch(Exception e) {
             Util.mensagemErro("Erro ao realizar login: " + Util.getMensagemErro(e));
+            e.printStackTrace();
             return "/login?faces-redirect=true";
         }
     }
