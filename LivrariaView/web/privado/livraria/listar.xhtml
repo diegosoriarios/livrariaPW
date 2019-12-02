@@ -32,13 +32,13 @@
                     
                     <p:column headerText="Ações">
                         <div align="center">
-                            <p:commandButton actionListener="#{controleLivraria.alterar(obj.ISBN)}"
+                            <p:commandButton actionListener="#{controleLivraria.alterar(obj.id)}"
                                              icon="pi pi-pencil"
                                              title="Editar"
                                              update="formEdicao"
                                              process="@this"
                                              oncomplete="PF('dlg').show();" />
-                            <p:commandButton actionListener="#{controleLivraria.remover(obj.ISBN)}"
+                            <p:commandButton actionListener="#{controleLivraria.remover(obj.id)}"
                                              icon="pi pi-trash"
                                              title="Remover"
                                              update="@form"
